@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="th" class="light scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การบำรุงรักษาคอมพิวเตอร์และอุปกรณ์พกพา | ศูนย์เรียนรู้เป็นมิตรทุกวัย</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Prompt & Sarabun for soft, readable Thai typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        soft: {
+                            bg: '#FAF8F5',          /* Soft warm cream base */
+                            card: '#FFFFFF',        /* Pure white cards */
+                            darkBg: '#1B2430',      /* Soft dark navy */
+                            darkCard: '#242F3E',    /* Muted card dark */
+                            teal: '#14B8A6',        /* Sage/Soft Teal */
+                            tealLight: '#F0FDFA',
+                            blue: '#0284C7',        /* Soft Sky Blue */
+                            blueLight: '#F0F9FF',
+                            amber: '#F59E0B',       /* Soft Warm Amber */
+                            amberLight: '#FFFBEB',
+                            rose: '#F43F5E',        /* Soft Warm Rose */
+                            roseLight: '#FFF1F2',
+                            purple: '#8B5CF6',      /* Soft Lavender */
+                            purpleLight: '#F5F3FF',
+                            textMain: '#292524',    /* Warm charcoal for high readability */
+                            textMuted: '#78716C'   /* Soft stone gray */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Prompt', 'Sarabun', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    boxShadow: {
+                        'soft-sm': '0 2px 8px rgba(0, 0, 0, 0.04)',
+                        'soft-md': '0 8px 24px rgba(0, 0, 0, 0.06)',
+                        'soft-lg': '0 16px 32px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Prompt', 'Sarabun', sans-serif;
+            background-color: #FAF8F5;
+            color: #292524;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .dark body, body.dark {
+            background-color: #121820;
+            color: #E7E5E4;
+        }
+        /* Custom friendly rounded scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F5F3EF;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1B2430;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+        /* Soft Focus Outline */
+        *:focus-visible {
+            outline: 3px solid #38BDF8;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-soft-bg dark:bg-[#121820] text-soft-textMain dark:text-stone-100 min-h-screen flex flex-col antialiased">
+
+    <!-- Header with Soft Rounded Cards & Warm Palette -->
+    <header class="sticky top-0 z-50 bg-white/90 dark:bg-[#1B2430]/90 backdrop-blur-md border-b border-stone-200/80 dark:border-stone-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo & Brand Badge -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-400 via-sky-400 to-indigo-400 flex items-center justify-center text-white shadow-soft-md">
+                        <i class="fa-solid fa-heart-pulse text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-teal-100 text-teal-800 dark:bg-teal-950 dark:text-teal-300">เรียนรู้ง่าย ทุกวัย</span>
+                            <h1 class="text-lg font-bold text-stone-800 dark:text-stone-100">คู่มือดูแลคอมพิวเตอร์ & มือถือ</h1>
+                        </div>
+                        <p class="text-xs text-stone-500 dark:text-stone-400">เข้าใจง่าย ปลอดภัย ใช้งานได้จริง</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs with Soft Pastel Hover Effects -->
+                <nav class="hidden md:flex items-center space-x-2">
+                    <a href="#mod4" class="px-4 py-2.5 rounded-2xl text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-amber-100/60 dark:hover:bg-amber-950/40 hover:text-amber-700 transition flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-400"></span>หมวด 4: การจัดการพลังงาน
+                    </a>
+                    <a href="#mod5" class="px-4 py-2.5 rounded-2xl text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-teal-100/60 dark:hover:bg-teal-950/40 hover:text-teal-700 transition flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-teal-400"></span>หมวด 5: ความปลอดภัย
+                    </a>
+                    <a href="#mod6" class="px-4 py-2.5 rounded-2xl text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-rose-100/60 dark:hover:bg-rose-950/40 hover:text-rose-700 transition flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-rose-400"></span>หมวด 6: แก้ปัญหาเบื้องต้น
+                    </a>
+                    <a href="#tools" class="px-4 py-2.5 rounded-2xl text-xs font-semibold text-sky-700 bg-sky-50 dark:bg-sky-950/60 dark:text-sky-300 border border-sky-200 dark:border-sky-800 transition flex items-center gap-2">
+                        <i class="fa-solid fa-gamepad text-sky-500"></i>ห้องทดลองโต้ตอบ
+                    </a>
+                </nav>
+
+                <!-- Soft Theme Switcher & Mobile Toggle -->
+                <div class="flex items-center space-x-2">
+                    <button onclick="toggleTheme()" class="p-3 rounded-2xl bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700 transition shadow-soft-sm flex items-center gap-2 text-xs font-semibold" title="เปลี่ยนโทนสี สว่าง/มืด">
+                        <i class="fa-solid fa-sun text-amber-500 hidden dark:block text-sm"></i>
+                        <i class="fa-solid fa-moon text-indigo-500 dark:hidden text-sm"></i>
+                        <span class="hidden sm:inline" id="theme-btn-text">โหมดละมุน</span>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-3 rounded-2xl bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-stone-200 dark:border-stone-800 bg-white dark:bg-[#1B2430] px-4 py-4 space-y-2">
+            <a href="#mod4" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-sm font-medium hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-200">
+                <i class="fa-solid fa-bolt text-amber-500 mr-2"></i>หมวด 4: การจัดการพลังงาน
+            </a>
+            <a href="#mod5" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-sm font-medium hover:bg-teal-50 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-200">
+                <i class="fa-solid fa-shield-heart text-teal-500 mr-2"></i>หมวด 5: ความปลอดภัย
+            </a>
+            <a href="#mod6" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-sm font-medium hover:bg-rose-50 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-200">
+                <i class="fa-solid fa-toolbox text-rose-500 mr-2"></i>หมวด 6: การแก้ไขปัญหา
+            </a>
+            <a href="#tools" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-sm font-semibold text-sky-600 bg-sky-50 dark:bg-sky-950">
+                <i class="fa-solid fa-gamepad mr-2"></i>ห้องทดลองโต้ตอบ (Lab)
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Banner with Soothing Pastel Background -->
+    <section class="relative overflow-hidden py-12 md:py-16 bg-gradient-to-b from-teal-50/60 via-amber-50/30 to-stone-50 dark:from-[#19222D] dark:via-[#161D27] dark:to-[#121820] border-b border-stone-200/60 dark:border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <img src="data:image/jpeg;base64,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" alt="">
+                
+                <!-- Left Main Intro -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-100/80 dark:bg-teal-950/80 border border-teal-200 dark:border-teal-800 text-teal-800 dark:text-teal-300 text-xs font-semibold shadow-soft-sm">
+                        <i class="fa-solid fa-seedling"></i> สื่อการเรียนรู้ดิจิทัลที่เป็นมิตร อ่านง่าย สบายตา
+                    </div>
+
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-stone-800 dark:text-stone-100 tracking-tight leading-snug">
+                        คู่มือดูแลคอมพิวเตอร์ สูตร พีม<br>
+                        <span class="bg-gradient-to-r from-teal-600 via-sky-600 to-indigo-600 dark:from-teal-300 dark:via-sky-300 dark:to-indigo-300 bg-clip-text text-transparent">
+                            และอุปกรณ์พกพาอย่างถูกวิธี
+                        </span>
+                    </h1>
+
+                    <p class="text-stone-600 dark:text-stone-300 text-base sm:text-lg leading-relaxed">
+                        ยินดีต้อนรับสู่ศูนย์การเรียนรู้เรื่องการบำรุงรักษาคอมพิวเตอร์ อธิบายด้วยภาษาที่เข้าใจง่าย มีภาพและตัวจำลองที่ให้ทุกคนทดลองกดเล่นได้ โดยไม่มีอันตรายต่อเครื่องคอมพิวเตอร์ของคุณ
+                    </p>
+
+                    <!-- Quick Navigation Badges -->
+                    <div class="grid grid-cols-3 gap-3 pt-2">
+                        <a href="#mod4" class="p-3.5 rounded-2xl bg-white dark:bg-stone-800/80 border border-stone-200/80 dark:border-stone-700/80 shadow-soft-sm hover:border-amber-300 transition text-center group">
+                            <i class="fa-solid fa-battery-half text-amber-500 text-2xl group-hover:scale-110 transition"></i>
+                            <div class="text-xs font-bold text-stone-800 dark:text-stone-200 mt-2">ประหยัดแบตเตอรี่</div>
+                            <div class="text-[11px] text-stone-500 dark:text-stone-400">หมวดที่ 4</div>
+                        </a>
+                        <a href="#mod5" class="p-3.5 rounded-2xl bg-white dark:bg-stone-800/80 border border-stone-200/80 dark:border-stone-700/80 shadow-soft-sm hover:border-teal-300 transition text-center group">
+                            <i class="fa-solid fa-user-shield text-teal-500 text-2xl group-hover:scale-110 transition"></i>
+                            <div class="text-xs font-bold text-stone-800 dark:text-stone-200 mt-2">ปลดล็อกปลอดภัย</div>
+                            <div class="text-[11px] text-stone-500 dark:text-stone-400">หมวดที่ 5</div>
+                        </a>
+                        <a href="#mod6" class="p-3.5 rounded-2xl bg-white dark:bg-stone-800/80 border border-stone-200/80 dark:border-stone-700/80 shadow-soft-sm hover:border-rose-300 transition text-center group">
+                            <i class="fa-solid fa-wand-magic-sparkles text-rose-500 text-2xl group-hover:scale-110 transition"></i>
+                            <div class="text-xs font-bold text-stone-800 dark:text-stone-200 mt-2">ซ่อมแซมเบื้องต้น</div>
+                            <div class="text-[11px] text-stone-500 dark:text-stone-400">หมวดที่ 6</div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Soft Status Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white dark:bg-stone-800 rounded-3xl p-6 border border-stone-200/80 dark:border-stone-700/80 shadow-soft-md space-y-4">
+                        <div class="flex items-center justify-between border-b border-stone-100 dark:border-stone-700 pb-3">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="text-sm font-bold text-stone-800 dark:text-stone-100">ตรวจเช็กความพร้อมเครื่อง</span>
+                            </div>
+                            <span class="text-xs font-mono text-stone-400">Windows 11 Ready</span>
+                        </div>
+
+                        <!-- Friendly Status Checklist -->
+                        <div class="space-y-3 text-xs">
+                            <div class="flex justify-between items-center p-3 rounded-xl bg-teal-50/60 dark:bg-teal-950/30 border border-teal-100 dark:border-teal-900/40">
+                                <span class="text-stone-700 dark:text-stone-300 flex items-center gap-2">
+                                    <i class="fa-solid fa-microchip text-teal-600"></i>การประมวลผล CPU
+                                </span>
+                                <span class="font-bold text-teal-700 dark:text-teal-300"><i class="fa-solid fa-circle-check mr-1"></i>สมดุลและเย็นสบาย</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 rounded-xl bg-sky-50/60 dark:bg-sky-950/30 border border-sky-100 dark:border-sky-900/40">
+                                <span class="text-stone-700 dark:text-stone-300 flex items-center gap-2">
+                                    <i class="fa-solid fa-lock text-sky-600"></i>ระบบความปลอดภัย TPM 2.0
+                                </span>
+                                <span class="font-bold text-sky-700 dark:text-sky-300"><i class="fa-solid fa-shield-check mr-1"></i>ปกป้องสมบูรณ์แบบ</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 rounded-xl bg-purple-50/60 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900/40">
+                                <span class="text-stone-700 dark:text-stone-300 flex items-center gap-2">
+                                    <i class="fa-solid fa-file-circle-check text-purple-600"></i>ความสมบูรณ์ไฟล์ระบบ
+                                </span>
+                                <span class="font-bold text-purple-700 dark:text-purple-300"><i class="fa-solid fa-check-double mr-1"></i>พร้อมใช้งาน</span>
+                            </div>
+                        </div>
+
+                        <a href="#tools" class="inline-flex items-center justify-center w-full py-3 px-4 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold transition shadow-soft-sm gap-2 mt-2">
+                            <i class="fa-solid fa-play"></i> เปิดห้องทดลองฝึกปฏิบัติ
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12 flex-grow">
+
+        <!-- ==================== MODULE 4 ==================== -->
+        <section id="mod4" class="scroll-mt-24 space-y-6">
+            <!-- Gentle Module Badge -->
+            <div class="flex items-center gap-3 border-b border-stone-200/80 dark:border-stone-800 pb-4">
+                <div class="w-12 h-12 rounded-2xl bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 flex items-center justify-center font-bold text-xl shadow-soft-sm">
+                    4
+                </div>
+                <div>
+                    <span class="text-xs uppercase font-bold tracking-wider text-amber-600 dark:text-amber-400">MODULE 4</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-800 dark:text-stone-100">การบำรุงรักษาและเพิ่มประสิทธิภาพ Windows 11</h2>
+                </div>
+            </div>
+
+            <!-- Content Card 4.1 -->
+            <div class="bg-white dark:bg-stone-800 rounded-3xl p-6 sm:p-8 border border-stone-200/80 dark:border-stone-700/80 shadow-soft-sm space-y-6">
+                <div class="space-y-2">
+                    <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 text-xs font-bold">
+                        หัวข้อที่ 4.1
+                    </span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-stone-800 dark:text-stone-100">
+                        การจัดการพลังงาน (Power Plan) บน Windows 11
+                    </h3>
+                </div>
+
+                <p class="text-stone-600 dark:text-stone-300 text-sm sm:text-base leading-relaxed">
+                    การเลือกโหมดพลังงาน หรือ <strong class="text-teal-700 dark:text-teal-300">Power Mode</strong> ช่วยให้เราเลือกระดับความเร็วของเครื่องให้เหมาะกับการใช้งานจริงได้อย่างสมดุล ซึ่งช่วยยืดอายุแบตเตอรี่ และป้องกันไม่ให้เครื่องร้อนเกินไป
+                </p>
+
+                <!-- Soft Interactive Power Plan Switcher -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    
+                    <!-- 1. Best Power Efficiency -->
+                    <div class="p-6 rounded-2xl border border-teal-200/80 dark:border-teal-900/60 bg-teal-50/40 dark:bg-teal-950/20 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-600 dark:bg-teal-900 dark:text-teal-300 flex items-center justify-center text-lg"><i class="fa-solid fa-leaf"></i></span>
+                            <span class="text-xs font-bold text-teal-700 dark:text-teal-300 bg-teal-100/80 dark:bg-teal-900 px-3 py-1 rounded-full">เน้นประหยัดแบต</span>
+                        </div>
+                        <h4 class="text-base font-bold text-stone-800 dark:text-stone-100">Best Power Efficiency</h4>
+                        <p class="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
+                            เหมาะสำหรับ: การพิมพ์งานเอกสาร ท่องเว็บอ่านบทความ หรือใช้นอกสถานที่ เครื่องจะเย็น เงียบ และใช้งานได้ยาวนานที่สุด
+                        </p>
+                        <div class="text-xs text-teal-700 dark:text-teal-300 pt-2 border-t border-teal-200/60 dark:border-teal-900/60 font-medium">
+                            <i class="fa-solid fa-circle-check mr-1"></i> แบตเตอรี่อยู่นานสูงสุด ปราศจากเสียงพัดลมนกกดดัน
+                        </div>
+                    </div>
+
+                    <!-- 2. Balanced Mode -->
+                    <div class="p-6 rounded-2xl border border-sky-200/80 dark:border-sky-900/60 bg-sky-50/40 dark:bg-sky-950/20 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="w-10 h-10 rounded-2xl bg-sky-100 text-sky-600 dark:bg-sky-900 dark:text-sky-300 flex items-center justify-center text-lg"><i class="fa-solid fa-scale-balanced"></i></span>
+                            <span class="text-xs font-bold text-sky-700 dark:text-sky-300 bg-sky-100/80 dark:bg-sky-900 px-3 py-1 rounded-full">แนะนำใช้งานทั่วไป</span>
+                        </div>
+                        <h4 class="text-base font-bold text-stone-800 dark:text-stone-100">Balanced Mode</h4>
+                        <p class="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
+                            ระบบจะปรับความเร็วสมองกล (CPU) ตามความหนักของงานโดยอัตโนมัติ ให้ความลื่นไหลกำลังดีและประหยัดพลังงานพร้อมกัน
+                        </p>
+                        <div class="text-xs text-sky-700 dark:text-sky-300 pt-2 border-t border-sky-200/60 dark:border-sky-900/60 font-medium">
+                            <i class="fa-solid fa-circle-check mr-1"></i> เหมาะสำหรับการใช้งานในชีวิตประจำวันมากที่สุด
+                        </div>
+                    </div>
+
+                    <!-- 3. Best Performance -->
+                    <div class="p-6 rounded-2xl border border-amber-200/80 dark:border-amber-900/60 bg-amber-50/40 dark:bg-amber-950/20 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-600 dark:bg-amber-900 dark:text-amber-300 flex items-center justify-center text-lg"><i class="fa-solid fa-bolt"></i></span>
+                            <span class="text-xs font-bold text-amber-700 dark:text-amber-300 bg-amber-100/80 dark:bg-amber-900 px-3 py-1 rounded-full">ความเร็วสูงสุด</span>
+                        </div>
+                        <h4 class="text-base font-bold text-stone-800 dark:text-stone-100">Best Performance</h4>
+                        <p class="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
+                            เหมาะสำหรับ: งานตัดต่อวิดีโอ การเรนเดอร์กราฟิก หรือเล่นเกมที่ต้องการความเร็วการประมวลผลขั้นสุด
+                        </p>
+                        <div class="text-xs text-amber-700 dark:text-amber-300 pt-2 border-t border-amber-200/60 dark:border-amber-900/60 font-medium">
+                            <i class="fa-solid fa-triangle-exclamation mr-1"></i> ใช้พลังงานสูงกว่า และอาจมีความร้อนเพิ่มขึ้น
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Easy Setup Step Cards -->
+                <div class="p-5 rounded-2xl bg-stone-50 dark:bg-stone-900/60 border border-stone-200/80 dark:border-stone-800 space-y-3">
+                    <h4 class="text-sm font-bold text-stone-800 dark:text-stone-200 flex items-center gap-2">
+                        <i class="fa-solid fa-hand-pointer text-teal-600"></i> ขั้นตอนง่ายๆ ในการเปลี่ยนโหมดบน Windows 11
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                        <div class="p-3 bg-white dark:bg-stone-800 rounded-xl border border-stone-200/60 dark:border-stone-700/60">
+                            <span class="font-bold text-teal-700 dark:text-teal-300">1. เปิดการตั้งค่า</span>
+                            <p class="text-stone-500 dark:text-stone-400 mt-1">กดปุ่ม <kbd class="px-1.5 py-0.5 bg-stone-200 dark:bg-stone-700 rounded font-mono">Win + I</kbd> บนคีย์บอร์ด</p>
+                        </div>
+                        <div class="p-3 bg-white dark:bg-stone-800 rounded-xl border border-stone-200/60 dark:border-stone-700/60">
+                            <span class="font-bold text-teal-700 dark:text-teal-300">2. เลือก System</span>
+                            <p class="text-stone-500 dark:text-stone-400 mt-1">คลิกที่เมนู <strong class="text-stone-700 dark:text-stone-200">Power & battery</strong></p>
+                        </div>
+                        <div class="p-3 bg-white dark:bg-stone-800 rounded-xl border border-stone-200/60 dark:border-stone-700/60">
+                            <span class="font-bold text-teal-700 dark:text-teal-300">3. หัวข้อ Power mode</span>
+                            <p class="text-stone-500 dark:text-stone-400 mt-1">คลิกเมนูเพื่อเลือกโหมดที่ต้องการ</p>
+                        </div>
+                        <div class="p-3 bg-white dark:bg-stone-800 rounded-xl border border-stone-200/60 dark:border-stone-700/60">
+                            <span class="font-bold text-teal-700 dark:text-teal-300">4. เสร็จเรียบร้อย</span>
+                            <p class="text-stone-500 dark:text-stone-400 mt-1">ระบบจะปรับโหมดทันที ไม่ต้องรีสตาร์ต</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Interactive Simulator -->
+                <div class="p-6 rounded-3xl bg-stone-900 text-stone-100 space-y-5 border border-stone-800 shadow-soft-md">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <div>
+                            <span class="text-xs font-mono text-teal-400 uppercase">Power Simulator</span>
+                            <h4 class="text-base sm:text-lg font-bold">ลองปรับระดับโหมดพลังงานจำลอง</h4>
+                        </div>
+                        <span class="text-xs bg-stone-800 text-stone-300 px-3 py-1 rounded-full border border-stone-700">คลิกเพื่อทดสอบผลลัพธ์</span>
+                    </div>
+
+                    <!-- Mode Selector Buttons -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <button onclick="updatePowerMode('saver')" id="pm-btn-saver" class="p-3.5 rounded-2xl border border-stone-700 bg-stone-800/80 text-left hover:border-teal-400 transition">
+                            <div class="text-teal-400 font-bold text-xs sm:text-sm"><i class="fa-solid fa-leaf mr-1"></i> Power Saver</div>
+                            <div class="text-[11px] text-stone-400 mt-0.5">ประหยัดแบตเตอรี่สูงสุด</div>
+                        </button>
+                        <button onclick="updatePowerMode('balanced')" id="pm-btn-bal" class="p-3.5 rounded-2xl border border-sky-400 bg-sky-950/40 text-left transition">
+                            <div class="text-sky-300 font-bold text-xs sm:text-sm"><i class="fa-solid fa-scale-balanced mr-1"></i> Balanced</div>
+                            <div class="text-[11px] text-stone-400 mt-0.5">สมดุลการใช้งาน</div>
+                        </button>
+                        <button onclick="updatePowerMode('perf')" id="pm-btn-perf" class="p-3.5 rounded-2xl border border-stone-700 bg-stone-800/80 text-left hover:border-amber-400 transition">
+                            <div class="text-amber-400 font-bold text-xs sm:text-sm"><i class="fa-solid fa-bolt mr-1"></i> Best Performance</div>
+                            <div class="text-[11px] text-stone-400 mt-0.5">ทำงานเร็วกระฉับกระเฉง</div>
+                        </button>
+                    </div>
+
+                    <!-- Metrics Indicators -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-3 border-t border-stone-800">
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-stone-400">ความเร็วสมองกล CPU:</span>
+                                <span id="pm-cpu-val" class="font-mono text-sky-300 font-bold">2.4 GHz</span>
+                            </div>
+                            <div class="w-full bg-stone-800 h-2.5 rounded-full overflow-hidden">
+                                <div id="pm-cpu-bar" class="bg-sky-400 h-full transition-all duration-500" style="width: 50%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-stone-400">ประมาณการเวลาแบตเตอรี่:</span>
+                                <span id="pm-bat-val" class="font-mono text-teal-300 font-bold">8 ชั่วโมง 00 นาที</span>
+                            </div>
+                            <div class="w-full bg-stone-800 h-2.5 rounded-full overflow-hidden">
+                                <div id="pm-bat-bar" class="bg-teal-400 h-full transition-all duration-500" style="width: 75%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-stone-400">อุณหภูมิ & เสียงพัดลม:</span>
+                                <span id="pm-temp-val" class="font-mono text-stone-300 font-bold">ปกติและเงียบสบาย (40°C)</span>
+                            </div>
+                            <div class="w-full bg-stone-800 h-2.5 rounded-full overflow-hidden">
+                                <div id="pm-temp-bar" class="bg-blue-400 h-full transition-all duration-500" style="width: 35%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== MODULE 5 ==================== -->
+        <section id="mod5" class="scroll-mt-24 space-y-6">
+            <!-- Gentle Module Badge -->
+            <div class="flex items-center gap-3 border-b border-stone-200/80 dark:border-stone-800 pb-4">
+                <div class="w-12 h-12 rounded-2xl bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300 flex items-center justify-center font-bold text-xl shadow-soft-sm">
+                    5
+                </div>
+                <div>
+                    <span class="text-xs uppercase font-bold tracking-wider text-teal-600 dark:text-teal-400">MODULE 5</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-800 dark:text-stone-100">ความปลอดภัยและการสำรองข้อมูล (Security)</h2>
+                </div>
+            </div>
+
+            <!-- Content Card 5.1 -->
+            <div class="bg-white dark:bg-stone-800 rounded-3xl p-6 sm:p-8 border border-stone-200/80 dark:border-stone-700/80 shadow-soft-sm space-y-6">
+                <div class="space-y-2">
+                    <span class="px-3 py-1 rounded-full bg-teal-100 text-teal-800 dark:bg-teal-950 dark:text-teal-300 text-xs font-bold">
+                        หัวข้อที่ 5.1
+                    </span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-stone-800 dark:text-stone-100">
+                        การตั้งค่าความปลอดภัยในการลงชื่อเข้าใช้: Windows Hello
+                    </h3>
+                </div>
+
+                <p class="text-stone-600 dark:text-stone-300 text-sm sm:text-base leading-relaxed">
+                    <strong class="text-teal-700 dark:text-teal-300">Windows Hello</strong> คือระบบยืนยันตัวตนที่เป็นมิตร สะดวก และปลอดภัยสูง ช่วยให้เข้าใช้งานเครื่องได้โดยไม่ต้องพิมพ์รหัสผ่านยาวๆ ทุกครั้ง
+                </p>
+
+                <!-- 3 Methods Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    
+                    <div class="p-5 rounded-2xl border border-stone-200 dark:border-stone-700 bg-stone-50/50 dark:bg-stone-900/40 space-y-3">
+                        <div class="w-10 h-10 rounded-2xl bg-teal-100 dark:bg-teal-900 text-teal-600 dark:text-teal-300 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-face-smile"></i>
+                        </div>
+                        <h4 class="text-base font-bold text-stone-800 dark:text-stone-100">1. สแกนใบหน้า (Facial)</h4>
+                        <p class="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
+                            ใช้กล้องอินฟราเรด (IR Camera) ตรวจจับเค้าโครงใบหน้าแบบ 3 มิติ ยิ้มให้กล้องก็พร้อมเข้าใช้งานทันที
+                        </p>
+                        <div class="text-xs font-semibold text-teal-700 dark:text-teal-300">
+                            <i class="fa-solid fa-shield-heart mr-1"></i> ปลอดภัย ไม่โดนหลอกด้วยภาพถ่าย
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border border-stone-200 dark:border-stone-700 bg-stone-50/50 dark:bg-stone-900/40 space-y-3">
+                        <div class="w-10 h-10 rounded-2xl bg-sky-100 dark:bg-sky-900 text-sky-600 dark:text-sky-300 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-fingerprint"></i>
+                        </div>
+                        <h4 class="text-base font-bold text-stone-800 dark:text-stone-100">2. สแกนลายนิ้วมือ (Fingerprint)</h4>
+                        <p class="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
+                            เพียงแตะนิ้วมือลงบนจุดสแกน สะดวก รวดเร็ว เหมือนการปลดล็อกโทรศัพท์มือถือที่เราคุ้นเคย
+                        </p>
+                        <div class="text-xs font-semibold text-sky-700 dark:text-sky-300">
+                            <i class="fa-solid fa-bolt mr-1"></i> แตะปุ๊บ ปลดล็อกปั๊บ
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border border-stone-200 dark:border-stone-700 bg-stone-50/50 dark:bg-stone-900/40 space-y-3">
+                        <div class="w-10 h-10 rounded-2xl bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-key"></i>
+                        </div>
+                        <h4 class="text-base font-bold text-stone-800 dark:text-stone-100">3. รหัส PIN (Windows Hello PIN)</h4>
+                        <p class="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
+                            รหัสตัวเลขสั้นๆ ที่ผูกแน่นกับฮาร์ดแวร์ชิป TPM ในเครื่องนั้นๆ แม้คนอื่นรู้รหัสไป ก็นำไปกดบนเครื่องอื่นไม่ได้
+                        </p>
+                        <div class="text-xs font-semibold text-purple-700 dark:text-purple-300">
+                            <i class="fa-solid fa-lock mr-1"></i> ล็อคเฉพาะเครื่องปลอดภัยสูง
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- TPM Note -->
+                <div class="p-5 rounded-2xl bg-teal-50 dark:bg-teal-950/40 border border-teal-200 dark:border-teal-900/60 flex flex-col md:flex-row gap-4 items-start md:items-center">
+                    <div class="w-12 h-12 rounded-2xl bg-teal-500 text-white flex-shrink-0 flex items-center justify-center text-2xl shadow-soft-sm">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="text-sm font-bold text-stone-800 dark:text-stone-100">อุ่นใจด้วยความปลอดภัยระดับฮาร์ดแวร์ TPM 2.0</h4>
+                        <p class="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
+                            ข้อมูลลายนิ้วมือ ใบหน้า และรหัส PIN จะถูกจัดเก็บและเข้ารหัสอยู่ภายในชิป TPM 2.0 บนเมนบอร์ดคอมพิวเตอร์อย่างมิดชิด โดยไม่มีการส่งข้อมูลออกไปภายนอกอินเทอร์เน็ต
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Friendly Windows Hello Lock Screen Test -->
+                <div class="p-6 rounded-3xl bg-stone-900 text-stone-100 space-y-5 text-center relative overflow-hidden">
+                    <span class="text-xs font-mono text-teal-400 uppercase">Interactive Hello Demo</span>
+                    <h4 class="text-lg font-bold">ลองทดสอบระบบปลดล็อกจำลอง</h4>
+
+                    <div class="max-w-md mx-auto bg-stone-800/90 border border-stone-700 rounded-3xl p-6 relative shadow-soft-md" id="bio-card">
+                        
+                        <div id="bio-avatar" class="w-20 h-20 rounded-full bg-stone-700 border-2 border-stone-600 mx-auto flex items-center justify-center text-3xl text-stone-400 transition-all duration-300">
+                            <i class="fa-solid fa-user-shield"></i>
+                        </div>
+
+                        <h5 class="text-sm font-bold text-white mt-3">วิทยาลัยอาชีวศึกษาสุรินทร์</h5>
+                        <p class="text-xs text-stone-400 mt-1" id="bio-msg">คลิกเลือกปุ่มด้านล่างเพื่อทดลองปลดล็อก</p>
+
+                        <!-- Method Buttons -->
+                        <div class="grid grid-cols-3 gap-2 mt-5">
+                            <button onclick="testBio('face')" class="p-3 bg-stone-700 hover:bg-teal-900/60 border border-stone-600 hover:border-teal-400 rounded-2xl text-xs transition flex flex-col items-center gap-1">
+                                <i class="fa-solid fa-face-smile text-teal-300 text-xl"></i>
+                                <span>สแกนหน้า</span>
+                            </button>
+                            <button onclick="testBio('finger')" class="p-3 bg-stone-700 hover:bg-sky-900/60 border border-stone-600 hover:border-sky-400 rounded-2xl text-xs transition flex flex-col items-center gap-1">
+                                <i class="fa-solid fa-fingerprint text-sky-300 text-xl"></i>
+                                <span>สแกนนิ้ว</span>
+                            </button>
+                            <button onclick="testBio('pin')" class="p-3 bg-stone-700 hover:bg-purple-900/60 border border-stone-600 hover:border-purple-400 rounded-2xl text-xs transition flex flex-col items-center gap-1">
+                                <i class="fa-solid fa-key text-purple-300 text-xl"></i>
+                                <span>กด PIN</span>
+                            </button>
+                        </div>
+
+                        <button onclick="resetBio()" class="mt-4 text-[11px] text-stone-400 hover:text-stone-200 underline">
+                            รีเซ็ตหน้าจอปลดล็อก
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== MODULE 6 ==================== -->
+        <section id="mod6" class="scroll-mt-24 space-y-6">
+            <!-- Gentle Module Badge -->
+            <div class="flex items-center gap-3 border-b border-stone-200/80 dark:border-stone-800 pb-4">
+                <div class="w-12 h-12 rounded-2xl bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 flex items-center justify-center font-bold text-xl shadow-soft-sm">
+                    6
+                </div>
+                <div>
+                    <span class="text-xs uppercase font-bold tracking-wider text-rose-600 dark:text-rose-400">MODULE 6</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-800 dark:text-stone-100">การวิเคราะห์และแก้ไขปัญหา (Troubleshooting)</h2>
+                </div>
+            </div>
+
+            <!-- 6.1 Safe Mode -->
+            <div class="bg-white dark:bg-stone-800 rounded-3xl p-6 sm:p-8 border border-stone-200/80 dark:border-stone-700/80 shadow-soft-sm space-y-6">
+                <div class="space-y-2">
+                    <span class="px-3 py-1 rounded-full bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 text-xs font-bold">
+                        หัวข้อที่ 6.1
+                    </span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-stone-800 dark:text-stone-100">
+                        การเข้าสู่ Safe Mode ใน Windows 11
+                    </h3>
+                </div>
+
+                <p class="text-stone-600 dark:text-stone-300 text-sm sm:text-base leading-relaxed">
+                    <strong class="text-rose-600 dark:text-rose-400">Safe Mode (เซฟโหมด)</strong> เปรียบเหมือน "โหมดความปลอดภัย" ที่ระบบจะเปิดทำงานเฉพาะโปรแกรมที่จำเป็นเท่านั้น เหมาะสำหรับใช้แก้ไขเวลาเครื่องค้าง ติดไวรัส หรือลงโปรแกรมผิดพลาด
+                </p>
+
+                <!-- 3 Methods -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    
+                    <div class="p-5 rounded-2xl border border-stone-200 dark:border-stone-700 bg-stone-50/50 dark:bg-stone-900/40 space-y-2">
+                        <span class="text-xs font-bold text-sky-700 dark:text-sky-300 bg-sky-100 dark:bg-sky-900 px-2.5 py-0.5 rounded-full">วิธีที่ 1</span>
+                        <h4 class="text-base font-bold text-stone-800 dark:text-stone-100">ผ่าน Windows Settings</h4>
+                        <ol class="text-xs text-stone-600 dark:text-stone-300 space-y-1.5 list-decimal list-inside">
+                            <li>ไปที่ Settings > System > Recovery</li>
+                            <li>ที่หัวข้อ Advanced startup กด <strong class="text-sky-600">Restart now</strong></li>
+                            <li>เลือก Troubleshoot > Advanced options > Startup Settings</li>
+                            <li>กด Restart แล้วเลือกกดเลข <kbd class="px-1 bg-stone-200 dark:bg-stone-700 rounded">4</kbd></li>
+                        </ol>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border border-stone-200 dark:border-stone-700 bg-stone-50/50 dark:bg-stone-900/40 space-y-2">
+                        <span class="text-xs font-bold text-teal-700 dark:text-teal-300 bg-teal-100 dark:bg-teal-900 px-2.5 py-0.5 rounded-full">วิธีที่ 2</span>
+                        <h4 class="text-base font-bold text-stone-800 dark:text-stone-100">ผ่าน Shift + Restart</h4>
+                        <ol class="text-xs text-stone-600 dark:text-stone-300 space-y-1.5 list-decimal list-inside">
+                            <li>เปิดเมนู Start แล้วคลิกปุ่ม Power</li>
+                            <li>กดปุ่ม <kbd class="px-1.5 py-0.5 bg-stone-200 dark:bg-stone-700 rounded font-mono">Shift</kbd> ค้างไว้ แล้วกด Restart</li>
+                            <li>เครื่องจะพาเข้าสู่หน้าจอสีฟ้า Choose an option</li>
+                            <li>เลือก Startup Settings เพื่อเข้า Safe Mode</li>
+                        </ol>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border border-stone-200 dark:border-stone-700 bg-stone-50/50 dark:bg-stone-900/40 space-y-2">
+                        <span class="text-xs font-bold text-rose-700 dark:text-rose-300 bg-rose-100 dark:bg-rose-900 px-2.5 py-0.5 rounded-full">วิธีที่ 3</span>
+                        <h4 class="text-base font-bold text-stone-800 dark:text-stone-100">เมื่อเครื่องบูตไม่ติด</h4>
+                        <ol class="text-xs text-stone-600 dark:text-stone-300 space-y-1.5 list-decimal list-inside">
+                            <li>กดปุ่ม Power เปิดเครื่อง พอขึ้นโลโก้ให้กด Power ค้างจนดับ</li>
+                            <li>ทำซ้ำ 2-3 ครั้ง ระบบจะเปิด Automatic Repair ให้เอง</li>
+                            <li>เลือก Advanced Options เพื่อเข้า Safe Mode</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 6.2 SFC Command -->
+            <div class="bg-white dark:bg-stone-800 rounded-3xl p-6 sm:p-8 border border-stone-200/80 dark:border-stone-700/80 shadow-soft-sm space-y-6">
+                <div class="space-y-2">
+                    <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300 text-xs font-bold">
+                        หัวข้อที่ 6.2
+                    </span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-stone-800 dark:text-stone-100">
+                        การซ่อมแซมไฟล์ระบบด้วยคำสั่ง sfc /scannow
+                    </h3>
+                </div>
+
+                <p class="text-stone-600 dark:text-stone-300 text-sm sm:text-base leading-relaxed">
+                    คำสั่ง <code class="px-2.5 py-1 bg-stone-100 dark:bg-stone-900 text-teal-700 dark:text-teal-300 font-mono rounded-lg">sfc /scannow</code> ทำหน้าที่เหมือนหมอตรวจสุขภาพคอมพิวเตอร์ จะช่วยค้นหาไฟล์ระบบที่เสียหายและทำการซ่อมแซมซ่อมให้อัตโนมัติ
+                </p>
+
+                <!-- Command Boxes -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-2xl bg-stone-900 text-stone-200 font-mono text-xs space-y-2">
+                        <div class="text-stone-400 flex justify-between items-center">
+                            <span>คำสั่งสแกนซ่อมไฟล์ (Main SFC)</span>
+                            <button onclick="copyCmd('sfc /scannow')" class="text-sky-300 hover:underline"><i class="fa-solid fa-copy mr-1"></i>คัดลอก</button>
+                        </div>
+                        <div class="p-3 bg-stone-950 rounded-xl text-teal-400 font-bold">sfc /scannow</div>
+                        <p class="text-[11px] text-stone-400 font-sans">ตรวจและซ่อมไฟล์ระบบที่เสียหายอัตโนมัติ</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-stone-900 text-stone-200 font-mono text-xs space-y-2">
+                        <div class="text-stone-400 flex justify-between items-center">
+                            <span>คำสั่งซ่อมคลังระบบ (DISM)</span>
+                            <button onclick="copyCmd('DISM /Online /Cleanup-Image /RestoreHealth')" class="text-amber-300 hover:underline"><i class="fa-solid fa-copy mr-1"></i>คัดลอก</button>
+                        </div>
+                        <div class="p-3 bg-stone-950 rounded-xl text-amber-400 font-bold">DISM /Online /Cleanup-Image /RestoreHealth</div>
+                        <p class="text-[11px] text-stone-400 font-sans">ดึงไฟล์ต้นฉบับมาซ่อมแซมคลังระบบ</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6.3 BSOD Analysis -->
+            <div class="bg-white dark:bg-stone-800 rounded-3xl p-6 sm:p-8 border border-stone-200/80 dark:border-stone-700/80 shadow-soft-sm space-y-6">
+                <div class="space-y-2">
+                    <span class="px-3 py-1 rounded-full bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 text-xs font-bold">
+                        หัวข้อที่ 6.3
+                    </span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-stone-800 dark:text-stone-100">
+                        การวิเคราะห์ปัญหาหน้าจอฟ้า (Blue Screen of Death - BSOD)
+                    </h3>
+                </div>
+
+                <p class="text-stone-600 dark:text-stone-300 text-sm sm:text-base leading-relaxed">
+                    หน้าจอฟ้า <strong class="text-rose-600 dark:text-rose-400">BSOD</strong> คือแจ้งเตือนฉุกเฉินเมื่อระบบทำงานผิดปกติ เพียงเราสังเกตรหัส <strong class="text-amber-600 dark:text-amber-400">Stop Code</strong> ก็จะรู้วิธีแก้ไขได้ทันที
+                </p>
+
+                <!-- Interactive BSOD Code Inspector -->
+                <div class="p-6 rounded-3xl bg-stone-900 text-stone-100 space-y-4 border border-stone-800">
+                    <div class="flex justify-between items-center flex-wrap gap-2">
+                        <h4 class="text-sm font-bold text-sky-300"><i class="fa-solid fa-stethoscope mr-2"></i>เลือกคลิกรหัสข้อผิดพลาดเพื่อดูคำแนะนำการแก้</h4>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        <button onclick="showBSOD('irql')" class="p-3 rounded-2xl bg-stone-800 hover:bg-sky-950 border border-stone-700 text-xs font-mono text-sky-300 text-left transition">
+                            DRIVER_IRQL_...
+                        </button>
+                        <button onclick="showBSOD('mem')" class="p-3 rounded-2xl bg-stone-800 hover:bg-amber-950 border border-stone-700 text-xs font-mono text-amber-300 text-left transition">
+                            MEMORY_MANAGEMENT
+                        </button>
+                        <button onclick="showBSOD('critical')" class="p-3 rounded-2xl bg-stone-800 hover:bg-rose-950 border border-stone-700 text-xs font-mono text-rose-300 text-left transition">
+                            CRITICAL_PROCESS_DIED
+                        </button>
+                        <button onclick="showBSOD('boot')" class="p-3 rounded-2xl bg-stone-800 hover:bg-purple-950 border border-stone-700 text-xs font-mono text-purple-300 text-left transition">
+                            INACCESSIBLE_BOOT...
+                        </button>
+                    </div>
+
+                    <!-- Result Panel -->
+                    <div id="bsod-res-box" class="p-5 rounded-2xl bg-stone-950 border border-stone-800 space-y-2">
+                        <div class="flex justify-between items-center border-b border-stone-800 pb-2 flex-wrap gap-2">
+                            <span id="bsod-res-title" class="font-mono font-bold text-sky-300 text-sm">DRIVER_IRQL_NOT_LESS_OR_EQUAL</span>
+                            <span id="bsod-res-tag" class="text-xs px-3 py-1 rounded-full bg-sky-950 text-sky-300 border border-sky-800">ปัญหาจากไดรเวอร์อุปกรณ์</span>
+                        </div>
+                        <p id="bsod-res-desc" class="text-xs text-stone-300 leading-relaxed pt-1">
+                            เกิดจากโปรแกรมคุมอุปกรณ์ (เช่น การ์ดจอ การ์ดเสียง Wi-Fi) ล้าสมัย หรือขัดแย้งกัน
+                        </p>
+                        <div class="pt-2">
+                            <span class="text-xs font-bold text-teal-400 flex items-center gap-1"><i class="fa-solid fa-wrench"></i> แนวทางแก้ไข:</span>
+                            <ul id="bsod-res-list" class="text-xs text-stone-400 space-y-1 list-disc list-inside mt-1">
+                                <li>อัปเดตไดรเวอร์อุปกรณ์ผ่าน Device Manager</li>
+                                <li>ถอนการติดตั้งโปรแกรมหรือไดรเวอร์ที่เพิ่งลงล่าสุด</li>
+                                <li>สแกนซ่อมไฟล์ระบบด้วย sfc /scannow</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ==================== LAB TOOLS SECTION ==================== -->
+        <section id="tools" class="scroll-mt-24 space-y-6">
+            <div class="bg-stone-900 rounded-3xl p-6 sm:p-8 text-stone-100 border border-stone-800 shadow-soft-md space-y-6">
+                
+                <div class="flex items-center justify-between flex-wrap gap-2 border-b border-stone-800 pb-4">
+                    <div>
+                        <span class="text-xs font-mono text-teal-400 uppercase font-bold">Interactive Lab</span>
+                        <h3 class="text-xl sm:text-2xl font-bold">ห้องทดลองพิมพ์คำสั่งซ่อมแซมจำลอง</h3>
+                    </div>
+                    <span class="text-xs bg-stone-800 text-stone-300 px-3 py-1 rounded-full border border-stone-700">
+                        <i class="fa-solid fa-terminal text-teal-400 mr-1.5"></i>ปลอดภัย 100% ไม่กระทบเครื่องจริง
+                    </span>
+                </div>
+
+                <!-- Screen -->
+                <div id="cmd-screen" class="p-5 bg-stone-950 font-mono text-xs text-stone-200 h-64 overflow-y-auto rounded-2xl border border-stone-800 space-y-2">
+                    <div class="text-stone-400">Microsoft Windows [Version 10.0.22631.3007]</div>
+                    <div class="text-stone-400">(c) Microsoft Corporation. All rights reserved.</div>
+                    <br>
+                    <div class="text-teal-300">คลิกที่ปุ่มคำสั่งจำลองด้านล่างเพื่อทดลองรันโปรแกรมซ่อมแซม</div>
+                </div>
+
+                <!-- Controls -->
+                <div class="flex flex-wrap gap-2 justify-between items-center pt-2">
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="executeCmd('sfc')" class="px-4 py-2.5 rounded-2xl bg-teal-600 hover:bg-teal-500 text-white font-mono text-xs font-semibold transition flex items-center gap-2">
+                            <i class="fa-solid fa-play"></i> รัน sfc /scannow
+                        </button>
+                        <button onclick="executeCmd('dism')" class="px-4 py-2.5 rounded-2xl bg-amber-600 hover:bg-amber-500 text-white font-mono text-xs font-semibold transition flex items-center gap-2">
+                            <i class="fa-solid fa-arrows-rotate"></i> รัน DISM RestoreHealth
+                        </button>
+                        <button onclick="clearCmd()" class="px-4 py-2.5 rounded-2xl bg-stone-800 hover:bg-stone-700 text-stone-300 font-mono text-xs transition">
+                            ล้างหน้าจอ (cls)
+                        </button>
+                    </div>
+                    <span class="text-xs text-stone-400 font-mono">Terminal Engine Active</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== SELF ASSESSMENT QUIZ ==================== -->
+        <section class="bg-white dark:bg-stone-800 rounded-3xl p-6 sm:p-8 border border-stone-200/80 dark:border-stone-700/80 shadow-soft-sm space-y-6">
+            <div class="flex items-center justify-between flex-wrap gap-2 border-b border-stone-100 dark:border-stone-700 pb-4">
+                <div>
+                    <span class="text-xs font-mono text-teal-600 dark:text-teal-400 font-bold uppercase">Self Assessment</span>
+                    <h3 class="text-2xl font-bold text-stone-800 dark:text-stone-100">แบบทดสอบประเมินความเข้าใจหลังการเรียน</h3>
+                </div>
+                <span class="text-xs px-3 py-1 rounded-full bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 font-semibold">ทบทวน 2 ข้อ</span>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Q1 -->
+                <div class="p-5 bg-stone-50 dark:bg-stone-900/50 rounded-2xl border border-stone-200/60 dark:border-stone-700/60 space-y-3">
+                    <p class="text-sm font-semibold text-stone-800 dark:text-stone-200">1. หากต้องการตรวจเช็กและซ่อมแซมไฟล์ระบบ Windows ที่เสียหาย ควรเลือกใช้คำสั่งใด?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        <button onclick="quizCheck(1, false, this)" class="p-3.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-left hover:border-teal-400 transition">ก. format C:</button>
+                        <button onclick="quizCheck(1, true, this)" class="p-3.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-left hover:border-teal-400 transition">ข. sfc /scannow</button>
+                        <button onclick="quizCheck(1, false, this)" class="p-3.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-left hover:border-teal-400 transition">ค. ipconfig /all</button>
+                        <button onclick="quizCheck(1, false, this)" class="p-3.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-left hover:border-teal-400 transition">ง. ping google.com</button>
+                    </div>
+                    <div id="quiz-msg-1" class="text-xs font-bold hidden"></div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="p-5 bg-stone-50 dark:bg-stone-900/50 rounded-2xl border border-stone-200/60 dark:border-stone-700/60 space-y-3">
+                    <p class="text-sm font-semibold text-stone-800 dark:text-stone-200">2. ข้อมูลชีวภาพ (ลายนิ้วมือ, ใบหน้า) ของ Windows Hello เก็บรักษาไว้ที่ใดปลอดภัยที่สุด?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        <button onclick="quizCheck(2, false, this)" class="p-3.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-left hover:border-teal-400 transition">ก. โฟลเดอร์ Downloads</button>
+                        <button onclick="quizCheck(2, false, this)" class="p-3.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-left hover:border-teal-400 transition">ข. แฟลชไดรฟ์ USB</button>
+                        <button onclick="quizCheck(2, true, this)" class="p-3.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-left hover:border-teal-400 transition">ค. ชิป TPM 2.0 บนฮาร์ดแวร์ในเครื่อง</button>
+                        <button onclick="quizCheck(2, false, this)" class="p-3.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-left hover:border-teal-400 transition">ง. ส่งไปเก็บไว้ใน Cloud สาธารณะ</button>
+                    </div>
+                    <div id="quiz-msg-2" class="text-xs font-bold hidden"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER WITH STUDENT DETAILS -->
+    <footer class="bg-stone-900 text-stone-300 text-xs py-10 mt-auto border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <!-- Developer Credit Details -->
+                <div class="space-y-2 border-l-4 border-teal-400 pl-4">
+                    <div class="text-stone-400 font-semibold text-xs">ผู้จัดทำและพัฒนาเว็บไซต์</div>
+                    <div class="text-xl font-bold text-white tracking-wide">นายพิสิฐ เงิดกระโทก</div>
+                    <div class="text-stone-300 leading-relaxed">
+                        นักศึกษาแผนกวิชาเทคโนโลยีธุรกิจดิจิทัล<br>
+                        <span class="text-amber-300 font-medium">วิทยาลัยอาชีวศึกษาสุรินทร์</span>
+                    </div>
+                </div>
+
+                <!-- Academic Info -->
+                <div class="md:text-right space-y-1.5 text-stone-400">
+                    <div class="font-bold text-stone-200 text-sm">รายวิชา การบำรุงรักษาคอมพิวเตอร์และอุปกรณ์พกพา</div>
+                    <p class="text-xs leading-relaxed">
+                        โครงการพัฒนาสื่อการเรียนรู้มัลติมีเดียเพื่อการศึกษา<br>
+                        แผนกวิชาเทคโนโลยีธุรกิจดิจิทัล วิทยาลัยอาชีวศึกษาสุรินทร์
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-stone-800 pt-6 text-center text-xs text-stone-500 flex flex-col sm:flex-row justify-between items-center gap-2">
+                <div>&copy; 2026 นายพิสิฐ เงิดกระโทก - วิทยาลัยอาชีวศึกษาสุรินทร์</div>
+                <div class="flex gap-3 text-stone-400">
+                    <span>Surin Vocational College</span>
+                    <span>•</span>
+                    <span>Digital Business Technology</span>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-stone-800 border border-teal-500/50 text-stone-100 px-4 py-3 rounded-2xl shadow-soft-lg transition-all duration-300 transform translate-y-20 opacity-0 flex items-center gap-2 text-xs">
+        <i class="fa-solid fa-circle-check text-teal-400 text-base"></i>
+        <span id="toast-text">คัดลอกคำสั่งเรียบร้อยแล้ว</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Theme Switcher Logic
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeText = document.getElementById('theme-btn-text');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                if (themeText) themeText.innerText = "โหมดละมุน";
+            } else {
+                html.classList.add('dark');
+                if (themeText) themeText.innerText = "โหมดกลางคืน";
+            }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        // Power Mode Calculator
+        function updatePowerMode(mode) {
+            const btnSaver = document.getElementById('pm-btn-saver');
+            const btnBal = document.getElementById('pm-btn-bal');
+            const btnPerf = document.getElementById('pm-btn-perf');
+
+            const cpuVal = document.getElementById('pm-cpu-val');
+            const cpuBar = document.getElementById('pm-cpu-bar');
+            const batVal = document.getElementById('pm-bat-val');
+            const batBar = document.getElementById('pm-bat-bar');
+            const tempVal = document.getElementById('pm-temp-val');
+            const tempBar = document.getElementById('pm-temp-bar');
+
+            // Reset
+            btnSaver.className = "p-3.5 rounded-2xl border border-stone-700 bg-stone-800/80 text-left hover:border-teal-400 transition";
+            btnBal.className = "p-3.5 rounded-2xl border border-stone-700 bg-stone-800/80 text-left hover:border-sky-400 transition";
+            btnPerf.className = "p-3.5 rounded-2xl border border-stone-700 bg-stone-800/80 text-left hover:border-amber-400 transition";
+
+            if (mode === 'saver') {
+                btnSaver.className = "p-3.5 rounded-2xl border border-teal-400 bg-teal-950/60 text-left transition";
+                cpuVal.innerText = "1.2 GHz (Power Saver)";
+                cpuBar.style.width = "25%";
+                cpuBar.className = "bg-teal-400 h-full transition-all duration-500";
+
+                batVal.innerText = "11 ชั่วโมง 30 นาที";
+                batBar.style.width = "95%";
+
+                tempVal.innerText = "เย็นจัดและเงียบสงบ (33°C)";
+                tempBar.style.width = "20%";
+            } else if (mode === 'balanced') {
+                btnBal.className = "p-3.5 rounded-2xl border border-sky-400 bg-sky-950/60 text-left transition";
+                cpuVal.innerText = "2.4 - 3.8 GHz (Dynamic)";
+                cpuBar.style.width = "50%";
+                cpuBar.className = "bg-sky-400 h-full transition-all duration-500";
+
+                batVal.innerText = "8 ชั่วโมง 00 นาที";
+                batBar.style.width = "75%";
+
+                tempVal.innerText = "ปกติและเงียบสบาย (40°C)";
+                tempBar.style.width = "35%";
+            } else if (mode === 'perf') {
+                btnPerf.className = "p-3.5 rounded-2xl border border-amber-400 bg-amber-950/60 text-left transition";
+                cpuVal.innerText = "4.5 GHz (Boost Speed)";
+                cpuBar.style.width = "95%";
+                cpuBar.className = "bg-amber-400 h-full transition-all duration-500";
+
+                batVal.innerText = "3 ชั่วโมง 20 นาที";
+                batBar.style.width = "30%";
+
+                tempVal.innerText = "พัดลมทำงานระบายความร้อน (68°C)";
+                tempBar.style.width = "80%";
+            }
+        }
+
+        // Biometric Lock Simulator
+        function testBio(type) {
+            const avatar = document.getElementById('bio-avatar');
+            const msg = document.getElementById('bio-msg');
+            const card = document.getElementById('bio-card');
+
+            avatar.className = "w-20 h-20 rounded-full bg-teal-500/20 border-2 border-teal-400 mx-auto flex items-center justify-center text-3xl text-teal-300 animate-pulse transition-all duration-300";
+            
+            if (type === 'face') msg.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> กำลังสแกนเค้าโครงใบหน้า...';
+            else if (type === 'finger') msg.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> กำลังอ่านข้อมูลลายนิ้วมือ...';
+            else msg.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> ตรวจสอบรหัส PIN กับชิป TPM 2.0...';
+
+            setTimeout(() => {
+                avatar.className = "w-20 h-20 rounded-full bg-teal-500/20 border-2 border-teal-400 mx-auto flex items-center justify-center text-3xl text-teal-400 transition-all duration-300";
+                avatar.innerHTML = '<i class="fa-solid fa-lock-open text-3xl"></i>';
+                msg.className = "text-xs font-bold text-teal-400 mt-1";
+                msg.innerHTML = '<i class="fa-solid fa-circle-check mr-1"></i> ยินดีต้อนรับ! ปลดล็อกเข้าใช้งานสำเร็จ';
+                card.classList.add('border-teal-400');
+            }, 1000);
+        }
+
+        function resetBio() {
+            const avatar = document.getElementById('bio-avatar');
+            const msg = document.getElementById('bio-msg');
+            const card = document.getElementById('bio-card');
+
+            avatar.className = "w-20 h-20 rounded-full bg-stone-700 border-2 border-stone-600 mx-auto flex items-center justify-center text-3xl text-stone-400 transition-all duration-300";
+            avatar.innerHTML = '<i class="fa-solid fa-user-shield"></i>';
+            msg.className = "text-xs text-stone-400 mt-1";
+            msg.innerHTML = "คลิกเลือกปุ่มด้านล่างเพื่อทดลองปลดล็อก";
+            card.classList.remove('border-teal-400');
+        }
+
+        // BSOD Inspector
+        const bsodDict = {
+            'irql': {
+                title: 'DRIVER_IRQL_NOT_LESS_OR_EQUAL',
+                tag: 'ปัญหาจากไดรเวอร์อุปกรณ์',
+                tagStyle: 'bg-sky-950 text-sky-300 border-sky-800',
+                desc: 'เกิดจากไดรเวอร์ฮาร์ดแวร์ (การ์ดจอ, Wi-Fi, Sound) ล้าสมัย หรือมีการส่งคำสั่งขัดแย้งกันในระบบ',
+                sols: ['อัปเดตไดรเวอร์ผ่าน Device Manager', 'ถอนการติดตั้งไดรเวอร์ล่าสุดแล้วรีสตาร์ต', 'สแกนซ่อมไฟล์ระบบด้วย sfc /scannow']
+            },
+            'mem': {
+                title: 'MEMORY_MANAGEMENT',
+                tag: 'หน่วยความจำ RAM ขัดแย้ง',
+                tagStyle: 'bg-amber-950 text-amber-300 border-amber-800',
+                desc: 'เกิดจากความผิดพลาดในการเขียนอ่านข้อมูล RAM หรือตั้งค่าความเร็ว Overclock ที่ไม่เสถียร',
+                sols: ['รันเครื่องมือ Windows Memory Diagnostic', 'ถอดแถบ RAM ทำความสะอาดหน้าสัมผัสด้วยยางลบ', 'คืนค่าตั้งต้น BIOS']
+            },
+            'critical': {
+                title: 'CRITICAL_PROCESS_DIED',
+                tag: 'ไฟล์กระบวนการหลักหยุดทำงาน',
+                tagStyle: 'bg-rose-950 text-rose-300 border-rose-800',
+                desc: 'โปรเซสหลักของ Windows ถูกยับยั้งกะทันหัน ซึ่งอาจเกิดจากมัลแวร์ทำลายไฟล์ระบบ หรือ SSD มีปัญหา',
+                sols: ['รันคำสั่ง sfc /scannow และ DISM', 'สแกนไวรัสด้วย Windows Security', 'ใช้ System Restore ย้อนกลับไปวันที่เสถียร']
+            },
+            'boot': {
+                title: 'INACCESSIBLE_BOOT_DEVICE',
+                tag: 'ไม่พบไดรฟ์บูตระบบ',
+                tagStyle: 'bg-purple-950 text-purple-300 border-purple-800',
+                desc: 'ระบบหาไดรฟ์ SSD/HDD ไม่พบ อาจเกิดจากสายเชื่อมต่อหลวม หรือโหมด SATA Controller ใน BIOS ถูกเปลี่ยน',
+                sols: ['ตรวจเช็กสายพอร์ตเชื่อมต่อ SSD', 'ตั้งค่า SATA Mode ใน BIOS ให้เป็น AHCI', 'ใช้ Startup Repair ซ่อมแซมระบบบูต']
+            }
+        };
+
+        function showBSOD(key) {
+            const data = bsodDict[key];
+            if (!data) return;
+
+            document.getElementById('bsod-res-title').innerText = data.title;
+            const tag = document.getElementById('bsod-res-tag');
+            tag.innerText = data.tag;
+            tag.className = `text-xs px-3 py-1 rounded-full border ${data.tagStyle}`;
+
+            document.getElementById('bsod-res-desc').innerText = data.desc;
+
+            const ul = document.getElementById('bsod-res-list');
+            ul.innerHTML = '';
+            data.sols.forEach(s => {
+                ul.innerHTML += `<li>${s}</li>`;
+            });
+        }
+
+        // Command Lab Logic
+        function executeCmd(cmd) {
+            const screen = document.getElementById('cmd-screen');
+            if (cmd === 'sfc') {
+                screen.innerHTML += `<br><div class="text-white">C:\\Windows\\system32> <span class="text-teal-400">sfc /scannow</span></div>`;
+                screen.innerHTML += `<div class="text-stone-300">Beginning system scan. This process will take some time.</div>`;
+                screen.scrollTop = screen.scrollHeight;
+
+                let count = 0;
+                const timer = setInterval(() => {
+                    count += 25;
+                    if (count <= 100) {
+                        screen.innerHTML += `<div class="text-sky-300">Verification phase of system scan: ${count}% complete.</div>`;
+                        screen.scrollTop = screen.scrollHeight;
+                    } else {
+                        clearInterval(timer);
+                        screen.innerHTML += `<div class="text-teal-400 font-bold mt-1">Windows Resource Protection found corrupt files and successfully repaired them.</div>`;
+                        screen.scrollTop = screen.scrollHeight;
+                    }
+                }, 400);
+            } else if (cmd === 'dism') {
+                screen.innerHTML += `<br><div class="text-white">C:\\Windows\\system32> <span class="text-amber-400">DISM /Online /Cleanup-Image /RestoreHealth</span></div>`;
+                screen.innerHTML += `<div class="text-stone-300">Deployment Image Servicing and Management tool</div>`;
+                screen.scrollTop = screen.scrollHeight;
+
+                setTimeout(() => {
+                    screen.innerHTML += `<div class="text-amber-300">[==========================100.0%==========================]</div>`;
+                    screen.innerHTML += `<div class="text-teal-400 font-bold">The restore operation completed successfully.</div>`;
+                    screen.scrollTop = screen.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        function clearCmd() {
+            const screen = document.getElementById('cmd-screen');
+            screen.innerHTML = `
+                <div class="text-stone-400">Microsoft Windows [Version 10.0.22631.3007]</div>
+                <div class="text-stone-400">(c) Microsoft Corporation. All rights reserved.</div>
+                <br>
+                <div class="text-teal-300">หน้าจอ Terminal ถูกล้างเรียบร้อยแล้ว</div>
+            `;
+        }
+
+        // Quiz Check
+        function quizCheck(qNum, isCorrect, btn) {
+            const container = btn.parentElement;
+            const buttons = container.querySelectorAll('button');
+            buttons.forEach(b => b.disabled = true);
+
+            const msg = document.getElementById(`quiz-msg-${qNum}`);
+            msg.classList.remove('hidden');
+
+            if (isCorrect) {
+                btn.classList.add('bg-teal-100', 'dark:bg-teal-950', 'border-teal-500', 'text-teal-800', 'dark:text-teal-300');
+                msg.className = "text-xs font-bold text-teal-600 dark:text-teal-400 mt-2";
+                msg.innerHTML = '<i class="fa-solid fa-circle-check mr-1"></i> ถูกต้องแม่นยำ!';
+            } else {
+                btn.classList.add('bg-rose-100', 'dark:bg-rose-950', 'border-rose-500', 'text-rose-800', 'dark:text-rose-300');
+                msg.className = "text-xs font-bold text-rose-600 dark:text-rose-400 mt-2";
+                msg.innerHTML = '<i class="fa-solid fa-circle-xmark mr-1"></i> ยังไม่ถูกต้อง ลองทบทวนเนื้อหาอีกครั้งนะครับ';
+            }
+        }
+
+        function copyCmd(str) {
+            const el = document.createElement('textarea');
+            el.value = str;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-text').innerText = `คัดลอกคำสั่ง "${str}" เรียบร้อยแล้ว`;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
