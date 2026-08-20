@@ -85,6 +85,14 @@
             outline: 3px solid #38BDF8;
             outline-offset: 2px;
         }
+        /* Highlight match animation */
+        .highlight-target {
+            animation: softGlow 2s ease-in-out;
+        }
+        @keyframes softGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0); }
+            50% { box-shadow: 0 0 0 8px rgba(20, 184, 166, 0.3); }
+        }
     </style>
 </head>
 <body class="bg-soft-bg dark:bg-[#121820] text-soft-textMain dark:text-stone-100 min-h-screen flex flex-col antialiased">
@@ -110,16 +118,19 @@
 
                 <!-- Navigation Tabs with Soft Pastel Hover Effects -->
                 <nav class="hidden md:flex items-center space-x-2">
-                    <a href="#mod4" class="px-4 py-2.5 rounded-2xl text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-amber-100/60 dark:hover:bg-amber-950/40 hover:text-amber-700 transition flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-amber-400"></span>หมวด 4: การจัดการพลังงาน
+                    <a href="#mod4" class="px-3.5 py-2 rounded-2xl text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-amber-100/60 dark:hover:bg-amber-950/40 hover:text-amber-700 transition flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-amber-400"></span>หมวด 4: พลังงาน & มือถือ
                     </a>
-                    <a href="#mod5" class="px-4 py-2.5 rounded-2xl text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-teal-100/60 dark:hover:bg-teal-950/40 hover:text-teal-700 transition flex items-center gap-2">
+                    <a href="#mod5" class="px-3.5 py-2 rounded-2xl text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-teal-100/60 dark:hover:bg-teal-950/40 hover:text-teal-700 transition flex items-center gap-1.5">
                         <span class="w-2 h-2 rounded-full bg-teal-400"></span>หมวด 5: ความปลอดภัย
                     </a>
-                    <a href="#mod6" class="px-4 py-2.5 rounded-2xl text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-rose-100/60 dark:hover:bg-rose-950/40 hover:text-rose-700 transition flex items-center gap-2">
+                    <a href="#mod6" class="px-3.5 py-2 rounded-2xl text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-rose-100/60 dark:hover:bg-rose-950/40 hover:text-rose-700 transition flex items-center gap-1.5">
                         <span class="w-2 h-2 rounded-full bg-rose-400"></span>หมวด 6: แก้ปัญหาเบื้องต้น
                     </a>
-                    <a href="#tools" class="px-4 py-2.5 rounded-2xl text-xs font-semibold text-sky-700 bg-sky-50 dark:bg-sky-950/60 dark:text-sky-300 border border-sky-200 dark:border-sky-800 transition flex items-center gap-2">
+                    <button onclick="openCheatSheet()" class="px-3.5 py-2 rounded-2xl text-xs font-semibold text-purple-700 bg-purple-50 dark:bg-purple-950/60 dark:text-purple-300 border border-purple-200 dark:border-purple-800 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-file-lines text-purple-500"></i>แผ่นสรุปด่วน
+                    </button>
+                    <a href="#tools" class="px-3.5 py-2 rounded-2xl text-xs font-semibold text-sky-700 bg-sky-50 dark:bg-sky-950/60 dark:text-sky-300 border border-sky-200 dark:border-sky-800 transition flex items-center gap-1.5">
                         <i class="fa-solid fa-gamepad text-sky-500"></i>ห้องทดลองโต้ตอบ
                     </a>
                 </nav>
@@ -141,7 +152,7 @@
         <!-- Mobile Drawer -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-stone-200 dark:border-stone-800 bg-white dark:bg-[#1B2430] px-4 py-4 space-y-2">
             <a href="#mod4" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-sm font-medium hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-200">
-                <i class="fa-solid fa-bolt text-amber-500 mr-2"></i>หมวด 4: การจัดการพลังงาน
+                <i class="fa-solid fa-bolt text-amber-500 mr-2"></i>หมวด 4: การจัดการพลังงาน & มือถือ
             </a>
             <a href="#mod5" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-sm font-medium hover:bg-teal-50 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-200">
                 <i class="fa-solid fa-shield-heart text-teal-500 mr-2"></i>หมวด 5: ความปลอดภัย
@@ -149,6 +160,9 @@
             <a href="#mod6" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-sm font-medium hover:bg-rose-50 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-200">
                 <i class="fa-solid fa-toolbox text-rose-500 mr-2"></i>หมวด 6: การแก้ไขปัญหา
             </a>
+            <button onclick="toggleMobileMenu(); openCheatSheet()" class="w-full text-left block px-4 py-3 rounded-xl text-sm font-semibold text-purple-600 bg-purple-50 dark:bg-purple-950">
+                <i class="fa-solid fa-file-lines mr-2"></i>เปิดแผ่นสรุปย่อคำสั่งด่วน
+            </button>
             <a href="#tools" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-sm font-semibold text-sky-600 bg-sky-50 dark:bg-sky-950">
                 <i class="fa-solid fa-gamepad mr-2"></i>ห้องทดลองโต้ตอบ (Lab)
             </a>
@@ -159,24 +173,37 @@
     <section class="relative overflow-hidden py-12 md:py-16 bg-gradient-to-b from-teal-50/60 via-amber-50/30 to-stone-50 dark:from-[#19222D] dark:via-[#161D27] dark:to-[#121820] border-b border-stone-200/60 dark:border-stone-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <img src="data:image/jpeg;base64,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" alt="">
                 
                 <!-- Left Main Intro -->
                 <div class="lg:col-span-7 space-y-6">
                     <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-100/80 dark:bg-teal-950/80 border border-teal-200 dark:border-teal-800 text-teal-800 dark:text-teal-300 text-xs font-semibold shadow-soft-sm">
-                        <i class="fa-solid fa-seedling"></i> สื่อการเรียนรู้ดิจิทัลที่เป็นมิตร อ่านง่าย สบายตา
+                        <i class="fa-solid fa-seedling text-teal-600 dark:text-teal-400"></i> สื่อการเรียนรู้ดิจิทัลที่เป็นมิตร อ่านง่าย สบายตา
                     </div>
 
                     <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-stone-800 dark:text-stone-100 tracking-tight leading-snug">
-                        คู่มือดูแลคอมพิวเตอร์ สูตร พีม<br>
+                        คู่มือดูแลคอมพิวเตอร์
+                        <i class="fa-solid fa-laptop-medical text-[0.9em] inline-flex items-center justify-center align-middle mx-1 text-teal-600 dark:text-teal-400"></i>
+                        <br>
                         <span class="bg-gradient-to-r from-teal-600 via-sky-600 to-indigo-600 dark:from-teal-300 dark:via-sky-300 dark:to-indigo-300 bg-clip-text text-transparent">
                             และอุปกรณ์พกพาอย่างถูกวิธี
                         </span>
                     </h1>
 
                     <p class="text-stone-600 dark:text-stone-300 text-base sm:text-lg leading-relaxed">
-                        ยินดีต้อนรับสู่ศูนย์การเรียนรู้เรื่องการบำรุงรักษาคอมพิวเตอร์ อธิบายด้วยภาษาที่เข้าใจง่าย มีภาพและตัวจำลองที่ให้ทุกคนทดลองกดเล่นได้ โดยไม่มีอันตรายต่อเครื่องคอมพิวเตอร์ของคุณ
+                        ยินดีต้อนรับสู่ศูนย์การเรียนรู้เรื่องการบำรุงรักษาคอมพิวเตอร์และมือถือ อธิบายด้วยภาษาที่เข้าใจง่าย มีภาพและตัวจำลองที่ให้ทุกคนทดลองกดเล่นได้ โดยไม่มีอันตรายต่อเครื่องของคุณ
                     </p>
+
+                    <!-- Quick Interactive Search Bar -->
+                    <div class="relative max-w-lg">
+                        <div class="relative flex items-center">
+                            <i class="fa-solid fa-magnifying-glass absolute left-4 text-stone-400 text-sm"></i>
+                            <input type="text" id="topic-search" oninput="searchTopics()" placeholder="ค้นหาบทเรียนด่วน เช่น Safe Mode, BSOD, แบตมือถือ, SFC..." class="w-full pl-11 pr-24 py-3 rounded-2xl bg-white dark:bg-stone-800 border border-stone-200/80 dark:border-stone-700 text-xs sm:text-sm text-stone-800 dark:text-stone-100 shadow-soft-sm focus:outline-none focus:ring-2 focus:ring-teal-400 transition">
+                            <button onclick="searchTopics()" class="absolute right-2 px-3 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold transition">
+                                ค้นหา
+                            </button>
+                        </div>
+                        <div id="search-results" class="hidden absolute left-0 right-0 top-14 bg-white dark:bg-stone-800 rounded-2xl border border-stone-200 dark:border-stone-700 shadow-soft-md z-40 p-2 space-y-1 text-xs"></div>
+                    </div>
 
                     <!-- Quick Navigation Badges -->
                     <div class="grid grid-cols-3 gap-3 pt-2">
@@ -206,7 +233,7 @@
                                 <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
                                 <span class="text-sm font-bold text-stone-800 dark:text-stone-100">ตรวจเช็กความพร้อมเครื่อง</span>
                             </div>
-                            <span class="text-xs font-mono text-stone-400">Windows 11 Ready</span>
+                            <span class="text-xs font-mono text-stone-400">Windows 11 & Mobile Ready</span>
                         </div>
 
                         <!-- Friendly Status Checklist -->
@@ -225,9 +252,9 @@
                             </div>
                             <div class="flex justify-between items-center p-3 rounded-xl bg-purple-50/60 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900/40">
                                 <span class="text-stone-700 dark:text-stone-300 flex items-center gap-2">
-                                    <i class="fa-solid fa-file-circle-check text-purple-600"></i>ความสมบูรณ์ไฟล์ระบบ
+                                    <i class="fa-solid fa-mobile-screen-button text-purple-600"></i>การดูแลอุปกรณ์พกพา
                                 </span>
-                                <span class="font-bold text-purple-700 dark:text-purple-300"><i class="fa-solid fa-check-double mr-1"></i>พร้อมใช้งาน</span>
+                                <span class="font-bold text-purple-700 dark:text-purple-300"><i class="fa-solid fa-battery-three-quarters mr-1"></i>ยืดอายุแบตเตอรี่</span>
                             </div>
                         </div>
 
@@ -253,7 +280,7 @@
                 </div>
                 <div>
                     <span class="text-xs uppercase font-bold tracking-wider text-amber-600 dark:text-amber-400">MODULE 4</span>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-800 dark:text-stone-100">การบำรุงรักษาและเพิ่มประสิทธิภาพ Windows 11</h2>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-800 dark:text-stone-100">การบำรุงรักษาและเพิ่มประสิทธิภาพ Windows 11 & อุปกรณ์พกพา</h2>
                 </div>
             </div>
 
@@ -408,6 +435,57 @@
                 </div>
 
             </div>
+
+            <!-- Content Card 4.2: Mobile Device Maintenance (ADDED ENHANCEMENT) -->
+            <div id="mod4-2" class="bg-white dark:bg-stone-800 rounded-3xl p-6 sm:p-8 border border-stone-200/80 dark:border-stone-700/80 shadow-soft-sm space-y-6">
+                <div class="space-y-2">
+                    <span class="px-3 py-1 rounded-full bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300 text-xs font-bold">
+                        หัวข้อที่ 4.2 (เพิ่มเติม)
+                    </span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-stone-800 dark:text-stone-100">
+                        การดูแลรักษาแบตเตอรี่และยืดอายุอุปกรณ์พกพา (Smartphones & Tablets)
+                    </h3>
+                </div>
+
+                <p class="text-stone-600 dark:text-stone-300 text-sm sm:text-base leading-relaxed">
+                    อุปกรณ์พกพาใช้แบตเตอรี่ประเภท <strong class="text-purple-600 dark:text-purple-300">Lithium-ion / Lithium-polymer</strong> ซึ่งการดูแลอย่างถูกวิธีจะช่วยให้แบตเตอรี่ไม่เสื่อมสภาพเร็วและปลอดภัยจากการพองตัว
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    
+                    <div class="p-5 rounded-2xl border border-purple-200/80 dark:border-purple-900/60 bg-purple-50/40 dark:bg-purple-950/20 space-y-2">
+                        <div class="w-10 h-10 rounded-2xl bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-battery-charging"></i>
+                        </div>
+                        <h4 class="text-base font-bold text-stone-800 dark:text-stone-100">กฎการชาร์จ 20% - 80%</h4>
+                        <p class="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
+                            อย่าปล่อยให้แบตเตอรี่หมดจนเหลือน้อยกว่า 20% และไม่จำเป็นต้องชาร์จแช่ทิ้งไว้ข้ามคืนเพื่อลดแรงดันสะสมในเซลล์แบต
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border border-rose-200/80 dark:border-rose-900/60 bg-rose-50/40 dark:bg-rose-950/20 space-y-2">
+                        <div class="w-10 h-10 rounded-2xl bg-rose-100 dark:bg-rose-900 text-rose-600 dark:text-rose-300 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-temperature-arrow-up"></i>
+                        </div>
+                        <h4 class="text-base font-bold text-stone-800 dark:text-stone-100">หลีกเลี่ยงความร้อนสูง</h4>
+                        <p class="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
+                            ศัตรูอันดับหนึ่งของแบตเตอรี่คือความร้อน ไม่ควรเล่นเกมขณะชาร์จ หรือวางมือถือไว้คอนโซลรถที่ตากแดดจัด
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl border border-teal-200/80 dark:border-teal-900/60 bg-teal-50/40 dark:bg-teal-950/20 space-y-2">
+                        <div class="w-10 h-10 rounded-2xl bg-teal-100 dark:bg-teal-900 text-teal-600 dark:text-teal-300 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-broom"></i>
+                        </div>
+                        <h4 class="text-base font-bold text-stone-800 dark:text-stone-100">การล้างไฟล์ขยะหน่วยความจำ</h4>
+                        <p class="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
+                            ลบไฟล์แคช (Cache) ในแอปโซเชียลมีเดียเป็นประจำ ช่วยคืนพื้นที่ความจุ และทำให้สมาร์ทโฟนทำงานลื่นไหลไม่ติดขัด
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
         </section>
 
         <!-- ==================== MODULE 5 ==================== -->
@@ -744,7 +822,12 @@
                     <span class="text-xs font-mono text-teal-600 dark:text-teal-400 font-bold uppercase">Self Assessment</span>
                     <h3 class="text-2xl font-bold text-stone-800 dark:text-stone-100">แบบทดสอบประเมินความเข้าใจหลังการเรียน</h3>
                 </div>
-                <span class="text-xs px-3 py-1 rounded-full bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 font-semibold">ทบทวน 2 ข้อ</span>
+                <div class="flex items-center gap-3">
+                    <div class="text-xs font-bold text-stone-600 dark:text-stone-300">
+                        คะแนนสะสม: <span id="quiz-score-val" class="text-teal-600 dark:text-teal-400 text-sm font-extrabold">0</span> / 4
+                    </div>
+                    <span class="text-xs px-3 py-1 rounded-full bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 font-semibold">4 ข้อทบทวน</span>
+                </div>
             </div>
 
             <div class="space-y-6">
@@ -771,10 +854,88 @@
                     </div>
                     <div id="quiz-msg-2" class="text-xs font-bold hidden"></div>
                 </div>
+
+                <!-- Q3 (NEW) -->
+                <div class="p-5 bg-stone-50 dark:bg-stone-900/50 rounded-2xl border border-stone-200/60 dark:border-stone-700/60 space-y-3">
+                    <p class="text-sm font-semibold text-stone-800 dark:text-stone-200">3. ข้อใดคือพฤติกรรมการชาร์จแบตเตอรี่มือถือที่ถูกต้องเพื่อยืดอายุการใช้งานให้นานที่สุด?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        <button onclick="quizCheck(3, false, this)" class="p-3.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-left hover:border-teal-400 transition">ก. ชาร์จแช่ทิ้งไว้ทั้งคืนทุกวัน</button>
+                        <button onclick="quizCheck(3, false, this)" class="p-3.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-left hover:border-teal-400 transition">ข. เล่นเกมกราฟิกสูงไปพร้อมกับเสียบชาร์จแบต</button>
+                        <button onclick="quizCheck(3, true, this)" class="p-3.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-left hover:border-teal-400 transition">ค. รักษาระดับแบตเตอรี่ให้อยู่ช่วง 20% ถึง 80%</button>
+                        <button onclick="quizCheck(3, false, this)" class="p-3.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-left hover:border-teal-400 transition">ง. ปล่อยให้แบตเตอรี่หมดดับ 0% ทุกครั้งก่อนชาร์จ</button>
+                    </div>
+                    <div id="quiz-msg-3" class="text-xs font-bold hidden"></div>
+                </div>
+
+                <!-- Q4 (NEW) -->
+                <div class="p-5 bg-stone-50 dark:bg-stone-900/50 rounded-2xl border border-stone-200/60 dark:border-stone-700/60 space-y-3">
+                    <p class="text-sm font-semibold text-stone-800 dark:text-stone-200">4. วิธีการเข้าสู่ Safe Mode แบบทางลัดขณะเปิดเครื่องอยู่ง่ายที่สุดคือข้อใด?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        <button onclick="quizCheck(4, true, this)" class="p-3.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-left hover:border-teal-400 transition">ก. กดปุ่ม Shift ค้างไว้แล้วกด Restart</button>
+                        <button onclick="quizCheck(4, false, this)" class="p-3.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-left hover:border-teal-400 transition">ข. ดึงปลั๊กคอมพิวเตอร์ออกทันที</button>
+                        <button onclick="quizCheck(4, false, this)" class="p-3.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-left hover:border-teal-400 transition">ค. กด Ctrl + Alt + Delete รวดเดียว</button>
+                        <button onclick="quizCheck(4, false, this)" class="p-3.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-left hover:border-teal-400 transition">ง. เปิดโหมดการบิน (Airplane Mode)</button>
+                    </div>
+                    <div id="quiz-msg-4" class="text-xs font-bold hidden"></div>
+                </div>
+            </div>
+
+            <!-- Quiz Congratulations Banner -->
+            <div id="quiz-success-card" class="hidden p-6 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-500 text-white space-y-2 text-center shadow-soft-md">
+                <div class="text-3xl"><i class="fa-solid fa-award"></i></div>
+                <h4 class="text-lg font-bold">ยินดีด้วย! คุณผ่านแบบทดสอบทบทวนครบถ้วน 4 ข้อ</h4>
+                <p class="text-xs text-teal-100">คุณมีความพร้อมในการดูแลรักษาคอมพิวเตอร์และมือถืออย่างถูกต้องปลอดภัยแล้ว</p>
             </div>
         </section>
 
     </main>
+
+    <!-- CHEAT SHEET MODAL (NEW FEATURE) -->
+    <div id="cheatsheet-modal" class="fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-stone-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto border border-stone-200 dark:border-stone-700 shadow-soft-lg">
+            
+            <div class="flex justify-between items-center border-b border-stone-200 dark:border-stone-700 pb-4">
+                <div class="flex items-center gap-2 text-purple-600 dark:text-purple-400 font-bold text-lg">
+                    <i class="fa-solid fa-file-lines text-xl"></i>
+                    <span>แผ่นสรุปย่อคู่มือด่วน (Cheat Sheet)</span>
+                </div>
+                <button onclick="closeCheatSheet()" class="w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-700 text-stone-500 hover:text-stone-800 dark:hover:text-stone-200 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="space-y-4 text-xs leading-relaxed">
+                <div class="p-4 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-900/60 space-y-1">
+                    <div class="font-bold text-purple-800 dark:text-purple-300">📌 คีย์ลัดสำคัญบน Windows 11:</div>
+                    <ul class="list-disc list-inside space-y-0.5 text-stone-700 dark:text-stone-300">
+                        <li><kbd class="px-1 bg-white dark:bg-stone-800 rounded font-mono">Win + I</kbd> : เปิดหน้าต่างการตั้งค่า (Settings)</li>
+                        <li><kbd class="px-1 bg-white dark:bg-stone-800 rounded font-mono">Shift + Restart</kbd> : ทางลัดเข้าหน้าจอ Troubleshooting เลือก Safe Mode</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 rounded-xl bg-teal-50 dark:bg-teal-950/40 border border-teal-200 dark:border-teal-900/60 space-y-1">
+                    <div class="font-bold text-teal-800 dark:text-teal-300">🛠️ คำสั่งซ่อมแซมผ่าน Command Prompt (Admin):</div>
+                    <div class="font-mono text-teal-700 dark:text-teal-300 font-bold">sfc /scannow</div>
+                    <div class="font-mono text-amber-700 dark:text-amber-300 font-bold">DISM /Online /Cleanup-Image /RestoreHealth</div>
+                </div>
+
+                <div class="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 space-y-1">
+                    <div class="font-bold text-amber-800 dark:text-amber-300">📱 กฎดูแลมือถือเบื้องต้น:</div>
+                    <p class="text-stone-700 dark:text-stone-300">ชาร์จช่วง 20%-80% • ไม่เล่นเกมขณะชาร์จ • ไม่วางตากแดด • ลบแคชแอปสม่ำเสมอ</p>
+                </div>
+            </div>
+
+            <div class="flex justify-end gap-2 border-t border-stone-200 dark:border-stone-700 pt-4">
+                <button onclick="window.print()" class="px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 dark:bg-stone-700 dark:hover:bg-stone-600 text-xs font-semibold transition">
+                    <i class="fa-solid fa-print mr-1"></i> พิมพ์ใบสรุปย่อ
+                </button>
+                <button onclick="closeCheatSheet()" class="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold transition">
+                    ตกลง / ปิดหน้าต่าง
+                </button>
+            </div>
+
+        </div>
+    </div>
 
     <!-- FOOTER WITH STUDENT DETAILS -->
     <footer class="bg-stone-900 text-stone-300 text-xs py-10 mt-auto border-t border-stone-800">
@@ -836,6 +997,63 @@
 
         function toggleMobileMenu() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        // Quick Topic Search Logic
+        const topicsDatabase = [
+            { title: 'การจัดการพลังงาน (Power Plan)', id: 'mod4', tag: 'หมวดที่ 4' },
+            { title: 'การดูแลแบตเตอรี่อุปกรณ์พกพา / มือถือ', id: 'mod4-2', tag: 'หมวดที่ 4' },
+            { title: 'ความปลอดภัย Windows Hello (ใบหน้า, นิ้วมือ, PIN)', id: 'mod5', tag: 'หมวดที่ 5' },
+            { title: 'การเข้าสู่ Safe Mode ใน Windows 11', id: 'mod6', tag: 'หมวดที่ 6' },
+            { title: 'การใช้คำสั่ง sfc /scannow และ DISM', id: 'mod6', tag: 'หมวดที่ 6' },
+            { title: 'การวิเคราะห์ปัญหาหน้าจอฟ้า (BSOD)', id: 'mod6', tag: 'หมวดที่ 6' },
+            { title: 'ห้องทดลองพิมพ์คำสั่งซ่อมแซมจำลอง', id: 'tools', tag: 'Lab' }
+        ];
+
+        function searchTopics() {
+            const query = document.getElementById('topic-search').value.toLowerCase().trim();
+            const resBox = document.getElementById('search-results');
+
+            if (!query) {
+                resBox.classList.add('hidden');
+                return;
+            }
+
+            const matches = topicsDatabase.filter(t => t.title.toLowerCase().includes(query) || t.tag.toLowerCase().includes(query));
+
+            if (matches.length > 0) {
+                resBox.innerHTML = '';
+                matches.forEach(m => {
+                    resBox.innerHTML += `
+                        <a href="#${m.id}" onclick="closeSearchResults('${m.id}')" class="p-2.5 rounded-xl hover:bg-teal-50 dark:hover:bg-stone-700 flex justify-between items-center text-stone-800 dark:text-stone-200 font-medium">
+                            <span>${m.title}</span>
+                            <span class="text-[10px] bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 px-2 py-0.5 rounded-full">${m.tag}</span>
+                        </a>
+                    `;
+                });
+                resBox.classList.remove('hidden');
+            } else {
+                resBox.innerHTML = `<div class="p-3 text-stone-400 text-center">ไม่พบหัวข้อที่ค้นหา ลองค้นหาด้วยคำว่า Safe Mode, BSOD, หรือ SFC</div>`;
+                resBox.classList.remove('hidden');
+            }
+        }
+
+        function closeSearchResults(targetId) {
+            document.getElementById('search-results').classList.add('hidden');
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+                targetEl.classList.add('highlight-target');
+                setTimeout(() => targetEl.classList.remove('highlight-target'), 2000);
+            }
+        }
+
+        // Modal Controls
+        function openCheatSheet() {
+            document.getElementById('cheatsheet-modal').classList.remove('hidden');
+        }
+
+        function closeCheatSheet() {
+            document.getElementById('cheatsheet-modal').classList.add('hidden');
         }
 
         // Power Mode Calculator
@@ -1018,8 +1236,14 @@
             `;
         }
 
-        // Quiz Check
+        // Quiz Check & Score Counter
+        let userScore = 0;
+        const answeredQuestions = new Set();
+
         function quizCheck(qNum, isCorrect, btn) {
+            if (answeredQuestions.has(qNum)) return;
+            answeredQuestions.add(qNum);
+
             const container = btn.parentElement;
             const buttons = container.querySelectorAll('button');
             buttons.forEach(b => b.disabled = true);
@@ -1028,6 +1252,8 @@
             msg.classList.remove('hidden');
 
             if (isCorrect) {
+                userScore += 1;
+                document.getElementById('quiz-score-val').innerText = userScore;
                 btn.classList.add('bg-teal-100', 'dark:bg-teal-950', 'border-teal-500', 'text-teal-800', 'dark:text-teal-300');
                 msg.className = "text-xs font-bold text-teal-600 dark:text-teal-400 mt-2";
                 msg.innerHTML = '<i class="fa-solid fa-circle-check mr-1"></i> ถูกต้องแม่นยำ!';
@@ -1035,6 +1261,10 @@
                 btn.classList.add('bg-rose-100', 'dark:bg-rose-950', 'border-rose-500', 'text-rose-800', 'dark:text-rose-300');
                 msg.className = "text-xs font-bold text-rose-600 dark:text-rose-400 mt-2";
                 msg.innerHTML = '<i class="fa-solid fa-circle-xmark mr-1"></i> ยังไม่ถูกต้อง ลองทบทวนเนื้อหาอีกครั้งนะครับ';
+            }
+
+            if (answeredQuestions.size === 4 && userScore === 4) {
+                document.getElementById('quiz-success-card').classList.remove('hidden');
             }
         }
 
